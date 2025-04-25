@@ -129,7 +129,7 @@ DATA(lv_page_size) = abs( io_request->get_paging( )->get_page_size( ) ).
 "Get Parmeters
 DATA(lt_parameters) = io_request->get_parameters( ).
 "Get parameters for RFC
-DATA(lv_status) = VALUE #( lt_parameters[ parameter_name = 'P_STATUS' ]-
+DATA(lv_status) = VALUE #( lt_parameters[ parameter_name = 'P_PARAM1' ]-
 value OPTIONAL ).
 IF gt_header IS INITIAL.
 " CALL RFC
