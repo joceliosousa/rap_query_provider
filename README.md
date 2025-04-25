@@ -106,9 +106,9 @@ lt_msg TYPE STANDARD TABLE OF zmhl_i_custom_msg,
 lv_order_by TYPE string.
 DATA: lt_filter_ranges_status TYPE RANGE OF ZMHL_I_Custom_Header-status,
 ls_filter_ranges_status LIKE LINE OF lt_filter_ranges_status.
-&quot;Get Filters
+"Get Filters
 DATA(lt_filter_cond) = io_request->get_filter( )->get_as_ranges( ).
-&quot;-get filter for STATUS
+"get filter for STATUS
 READ TABLE lt_filter_cond WITH KEY name = 'STATUS' INTO
 DATA(ls_status_cond).
 IF sy-subrc EQ 0.
@@ -121,32 +121,32 @@ ENDIF.
 ***
 *** et paging properties
 *** DATA(lv_offset) = io_request->get_paging( )->get_offset( ).
-&quot;Get positive page size, to avoid -1
+"Get positive page size, to avoid -1
 DATA(lv_page_size) = abs( io_request->get_paging( )->get_page_size( ) ).
-&quot;Get Parmeters
+"Get Parmeters
 DATA(lt_parameters) = io_request->get_parameters( ).
-&quot;Get parameters for RFC
+"Get parameters for RFC
 DATA(lv_status) = VALUE #( lt_parameters[ parameter_name = 'P_STATUS' ]-
 value OPTIONAL ).
 IF gt_header IS INITIAL.
-&quot; CALL RFC
+" CALL RFC
 *** CALL FUNCTION 'RFC...'
 *** EXPORTING
 *** im_status = lv_status
 *** TABLES
 *** t_item = lt_item
 *** t_msg = lt_msg.
-&quot; RETURNING PAYLOAD
+" RETURNING PAYLOAD
 lt_header = VALUE #( ( headerid = 'RFC01' ) ).
 gt_header = lt_header.
-&quot; Items for Return
+" Items for Return
 lt_item = VALUE #(
 ( headerid = 'RFC01' item = '01' description = 'Item 1.1' )
 ( headerid = 'RFC01' item = '02' description = 'Item 1.2' )
 ( headerid = 'RFC01' item = '03' description = 'Item 1.3' )
 ).
 gt_item = lt_item.
-&quot; Msgs for Return
+" Msgs for Return
 lt_msg = VALUE #(
 ( headerid = 'RFC01' item = '01' message = 'Success 1.1' )
 ( headerid = 'RFC01' item = '02' message = 'Success 1.2' )
@@ -160,25 +160,25 @@ ENDIF.
 CASE io_request->get_entity_id( ).
 
 WHEN 'ZMHL_I_CUSTOM_HEADER'.
-&quot;set total count of results
+"set total count of results
 IF io_request->is_total_numb_of_rec_requested( ).
 io_response->set_total_number_of_records( lines( lt_header ) ).
 ENDIF.
-&quot;set data
+"set data
 io_response->set_data( lt_header ).
 WHEN 'ZMHL_I_CUSTOM_ITEM'.
-&quot;set total count of results
+"set total count of results
 IF io_request->is_total_numb_of_rec_requested( ).
 io_response->set_total_number_of_records( lines( lt_item ) ).
 ENDIF.
-&quot;set data
+"set data
 io_response->set_data( lt_item ).
 WHEN 'ZMHL_I_CUSTOM_MSG'.
-&quot;set total count of results
+"set total count of results
 IF io_request->is_total_numb_of_rec_requested( ).
 io_response->set_total_number_of_records( lines( lt_msg ) ).
 ENDIF.
-&quot;set data
+"set data
 io_response->set_data( lt_msg ).
 ENDCASE.
 ENDMETHOD.
