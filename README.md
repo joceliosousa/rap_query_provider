@@ -26,7 +26,7 @@ _Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes
 filtros._
 
 ### 1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
-filtros (parâmetros de entrada) e as filhas _Item e _Msg (tabelas que serão retornadas).
+### filtros (parâmetros de entrada) e as filhas _Item e _Msg (tabelas que serão retornadas).
 
 _Utilizaremos um parâmetro simples (não é range), chamado p_param1
 Cenários simples com campos não complexos podem ser passados no with
@@ -52,7 +52,7 @@ retornada._
 
 ### 2. Salve a CDS criada, mas ainda não as ative. Crie as outras CDSs que serão retornadas
 como uma tabela com várias linhas.
-Para o meu cenário ZMHL_I_Custom_Item e ZMHL_I_CUSTOM_MSG.
+_Para o meu cenário ZMHL_I_Custom_Item e ZMHL_I_CUSTOM_MSG._
 
 ```
 @ObjectModel.query.implementedBy: 'ABAP:ZMHL_CL_CUSTOM_ENTITY'
