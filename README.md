@@ -250,7 +250,12 @@ _Parâmetros simples como o nosso p_param1 virá pelo método:_
 
 ![image](https://github.com/user-attachments/assets/848ea9b4-8f4a-4eaf-9995-c208620b6b19)
 
-![image](https://github.com/user-attachments/assets/efa6fbba-4dbd-4881-bbcc-2780d3064a0b)
+## O Resultado:
+
+![image](https://github.com/user-attachments/assets/de2a6b2d-511d-41d7-99c8-7cf72b0d7891)
+
+Até breve!
+
 
 
 
