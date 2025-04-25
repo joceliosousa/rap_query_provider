@@ -24,7 +24,7 @@ de itens, tipo tabela (array).
 _Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
 filtros._
 
-###1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
+### 1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
 filtros (parâmetros de entrada) e as filhas _Item e _Msg (tabelas que serão retornadas).
 
 _Utilizaremos um parâmetro simples (não é range), chamado p_param1
