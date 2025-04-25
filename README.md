@@ -88,8 +88,8 @@ implementação comum entre elas, 'ABAP:ZMHL_CL_CUSTOM_ENTITY'.
 filtros do oData e retornada as tabelas item e msg.
 
 ![image](https://github.com/user-attachments/assets/c330e2cd-9b5f-4c1c-b310-3dac1d7cbfe8)
-A classe de implementação será criada com a interface if_rap_query_provider e o método
-select ficará aberto para implementar a chamada da RFC.
+_A classe de implementação será criada com a interface if_rap_query_provider e o método
+select ficará aberto para implementar a chamada da RFC._
 
 ![image](https://github.com/user-attachments/assets/e684ec15-97d9-48ed-aca0-32eb3ccd3831)
 
@@ -105,7 +105,7 @@ lv_order_by TYPE string.
 DATA: lt_filter_ranges_status TYPE RANGE OF ZMHL_I_Custom_Header-status,
 ls_filter_ranges_status LIKE LINE OF lt_filter_ranges_status.
 &quot;Get Filters
-DATA(lt_filter_cond) = io_request-&gt;get_filter( )-&gt;get_as_ranges( ).
+DATA(lt_filter_cond) = io_request->get_filter( )->get_as_ranges( ).
 &quot;-get filter for STATUS
 READ TABLE lt_filter_cond WITH KEY name = 'STATUS' INTO
 DATA(ls_status_cond).
@@ -117,12 +117,12 @@ ENDLOOP.
 ENDIF.
 
 ***
-*** &quot;Get paging properties
-*** DATA(lv_offset) = io_request-&gt;get_paging( )-&gt;get_offset( ).
+*** et paging properties
+*** DATA(lv_offset) = io_request->get_paging( )->get_offset( ).
 &quot;Get positive page size, to avoid -1
-DATA(lv_page_size) = abs( io_request-&gt;get_paging( )-&gt;get_page_size( ) ).
+DATA(lv_page_size) = abs( io_request->get_paging( )->get_page_size( ) ).
 &quot;Get Parmeters
-DATA(lt_parameters) = io_request-&gt;get_parameters( ).
+DATA(lt_parameters) = io_request->get_parameters( ).
 &quot;Get parameters for RFC
 DATA(lv_status) = VALUE #( lt_parameters[ parameter_name = 'P_STATUS' ]-
 value OPTIONAL ).
@@ -155,40 +155,42 @@ lt_header = gt_header.
 lt_item = gt_item.
 lt_msg = gt_msg.
 ENDIF.
-CASE io_request-&gt;get_entity_id( ).
+CASE io_request->get_entity_id( ).
 
 WHEN 'ZMHL_I_CUSTOM_HEADER'.
 &quot;set total count of results
-IF io_request-&gt;is_total_numb_of_rec_requested( ).
-io_response-&gt;set_total_number_of_records( lines( lt_header ) ).
+IF io_request->is_total_numb_of_rec_requested( ).
+io_response->set_total_number_of_records( lines( lt_header ) ).
 ENDIF.
 &quot;set data
-io_response-&gt;set_data( lt_header ).
+io_response->set_data( lt_header ).
 WHEN 'ZMHL_I_CUSTOM_ITEM'.
 &quot;set total count of results
-IF io_request-&gt;is_total_numb_of_rec_requested( ).
-io_response-&gt;set_total_number_of_records( lines( lt_item ) ).
+IF io_request->is_total_numb_of_rec_requested( ).
+io_response->set_total_number_of_records( lines( lt_item ) ).
 ENDIF.
 &quot;set data
-io_response-&gt;set_data( lt_item ).
+io_response->set_data( lt_item ).
 WHEN 'ZMHL_I_CUSTOM_MSG'.
 &quot;set total count of results
-IF io_request-&gt;is_total_numb_of_rec_requested( ).
-io_response-&gt;set_total_number_of_records( lines( lt_msg ) ).
+IF io_request->is_total_numb_of_rec_requested( ).
+io_response->set_total_number_of_records( lines( lt_msg ) ).
 ENDIF.
 &quot;set data
-io_response-&gt;set_data( lt_msg ).
+io_response->set_data( lt_msg ).
 ENDCASE.
 ENDMETHOD.
+```
 
 Veja que na implementação você terá que retornar o campo chave em todas as
 estruturas, na Header, Item e Msg. Pode ser um valor fixo no código, não precisa vir pelo
 GET.
 
-6. Cria o Service Definition e dê nomes (as Header) a cada CDS que está sendo exposta
+### 6. Cria o Service Definition e dê nomes (as Header) a cada CDS que está sendo exposta
 para facilitar o acesso as filhas pelo serviço.
 
-@EndUserText.label: &#39;Custom Entity Service Definition&#39;
+```
+@EndUserText.label: 'Custom Entity Service Definition'
 define service ZMHL_Custom_Entity {
 expose ZMHL_i_Custom_Header as Header;
 expose ZMHL_I_Custom_Item as Item;
@@ -196,19 +198,12 @@ expose ZMHL_I_CUSTOM_MSG as Msg;
 }
 ```
 
-_Veja que na implementação você terá que retornar o campo chave em todas as
-estruturas, na Header, Item e Msg. Pode ser um valor fixo no código, não precisa vir pelo
-GET._
-
-### 6. Cria o Service Definition e dê nomes (as Header) a cada CDS que está sendo exposta
-para facilitar o acesso as filhas pelo serviço.
-
 7. Crie o Service Binding para serviço odata V2 (tipo webapi) e clique no botão publicar.
 
    ![image](https://github.com/user-attachments/assets/7ddd8902-83b7-4e00-ac03-6edd69be9c98)
 
-* *Veja que a navegação entre Header e filhas é criada e fica fácil de passar o que precisa ser
-retornado na chamada do serviço, via parâmetro $expand do Odata.
+_Veja que a navegação entre Header e filhas é criada e fica fácil de passar o que precisa ser
+retornado na chamada do serviço, via parâmetro $expand do Odata._
 
 > [!NOTE]
 > O serviço publicado fica local, para publicar o serviço que será transportado, utilize:
@@ -216,6 +211,7 @@ retornado na chamada do serviço, via parâmetro $expand do Odata.
 
 ![image](https://github.com/user-attachments/assets/2f83fea1-3bd7-4fc3-a1ee-d26e006c2547)
 
+> [!IMPORTANT]
 Teste Nosso cenário: Utilizaremos a ferramenta POSTMAN duas tabelas de retorno, com dois
 tipos diferentes, e utilizaremos filtros e parâmetros. Os parâmetros são passados na URL entre ( ),
 no exemplo abaixo: (p_param1=’A’).
