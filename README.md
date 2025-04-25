@@ -5,6 +5,7 @@ Já construi algumas APIs ou mesmo expus CDS custom entity para retornar algo ti
 Mas e se você precisar retorar várias estruturas?
 Como sabemos, criando custom entity e implementando Query provider é bem simples para retornar apenas uma estrutura.
 
+> [!CAUTION]
 E as chamadas Deep Entities ?
 
 > [!IMPORTANT]
