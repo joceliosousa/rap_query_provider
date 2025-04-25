@@ -99,7 +99,7 @@ select ficará aberto para implementar a chamada da RFC._
 ![image](https://github.com/user-attachments/assets/e684ec15-97d9-48ed-aca0-32eb3ccd3831)
 
 ### 5. Ative todos os objetos criados até agora e implemente a classe para ler filtros e
-###retornar a tabela correta para cada filha criada.
+### retornar a tabela correta para cada filha criada.
 
 ```
 METHOD if_rap_query_provider~select.
