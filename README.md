@@ -6,7 +6,7 @@ Como sabemos, criando custom entity e implementando Query provider é bem simple
 
 E as chamadas Deep Entities ?
 
-!IMPORTANT
+> [!IMPORTANT]
 Nesta abordagem utilizaremos os recursos do OData, com o GET. Neste cenário não é possível
 passar um xml/json no body, mas podemos utilizar os tipos de parâmetros que o protocolo
 oferece, como filters, expand, etc.
@@ -49,7 +49,7 @@ _Msg : composition [1..*] of ZMHL_I_CUSTOM_MSG;
 _Deve existir uma composition, 1 para vários, com o tipo de estrutura (CDS) que será
 retornada._
 
-###2. Salve a CDS criada, mas ainda não as ative. Crie as outras CDSs que serão retornadas
+### 2. Salve a CDS criada, mas ainda não as ative. Crie as outras CDSs que serão retornadas
 como uma tabela com várias linhas.
 Para o meu cenário ZMHL_I_Custom_Item e ZMHL_I_CUSTOM_MSG.
 
@@ -80,11 +80,11 @@ $projection.HeaderID;
 
 Salve todas as CDS criadas.
 
-3. Criada as três CDSs, perceba que o campo chave é o mesmo para as três e existe
+### 3. Criada as três CDSs, perceba que o campo chave é o mesmo para as três e existe
 associação entre as filhas e a CDS root. Perceba, também, que existe uma
 implementação comum entre elas, 'ABAP:ZMHL_CL_CUSTOM_ENTITY'.
 
-4. Agora cria a Classe de implementação, onde vai ser feita a chamada da RFC com os
+### 4. Agora cria a Classe de implementação, onde vai ser feita a chamada da RFC com os
 filtros do oData e retornada as tabelas item e msg.
 
 ![image](https://github.com/user-attachments/assets/c330e2cd-9b5f-4c1c-b310-3dac1d7cbfe8)
@@ -93,7 +93,7 @@ select ficará aberto para implementar a chamada da RFC.
 
 ![image](https://github.com/user-attachments/assets/e684ec15-97d9-48ed-aca0-32eb3ccd3831)
 
-5. Ative todos os objetos criados até agora e implemente a classe para ler filtros e
+### 5. Ative todos os objetos criados até agora e implemente a classe para ler filtros e
 retornar a tabela correta para cada filha criada.
 
 ```
@@ -195,6 +195,13 @@ expose ZMHL_I_Custom_Item as Item;
 expose ZMHL_I_CUSTOM_MSG as Msg;
 }
 ```
+
+_Veja que na implementação você terá que retornar o campo chave em todas as
+estruturas, na Header, Item e Msg. Pode ser um valor fixo no código, não precisa vir pelo
+GET._
+
+### 6. Cria o Service Definition e dê nomes (as Header) a cada CDS que está sendo exposta
+para facilitar o acesso as filhas pelo serviço.
 
 7. Crie o Service Binding para serviço odata V2 (tipo webapi) e clique no botão publicar.
 
