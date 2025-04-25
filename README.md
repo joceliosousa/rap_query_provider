@@ -226,7 +226,8 @@ a implementação, dentro da classe, para cada entidade que você criou como fil
 navegação fará com que ele passe apenas uma vez na implementação e não será possível
 retornar o tipo de dados das filhas da estrutura complexa criada.
 
-![image](https://github.com/user-attachments/assets/469d4f4a-c38e-4f60-aec8-d0d861f5217b)
+![image](https://github.com/user-attachments/assets/70bd6318-e724-4d7e-84ad-5bfa6523e3fd)
+
 
 
 > [!NOTE]
