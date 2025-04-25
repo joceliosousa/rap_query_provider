@@ -6,7 +6,7 @@ Como sabemos, criando custom entity e implementando Query provider é bem simple
 
 E as chamadas Deep Entities ?
 
-> [!IMPORTANTE]
+> [!IMPORTANT]
 Nesta abordagem utilizaremos os recursos do OData, com o GET. Neste cenário não é possível
 passar um xml/json no body, mas podemos utilizar os tipos de parâmetros que o protocolo
 oferece, como filters, expand, etc.
