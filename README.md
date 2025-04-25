@@ -78,7 +78,7 @@ $projection.HeaderID;
 }
 ```
 
-Salve todas as CDS criadas.
+_Salve todas as CDS criadas._
 
 ### 3. Criada as três CDSs, perceba que o campo chave é o mesmo para as três e existe
 associação entre as filhas e a CDS root. Perceba, também, que existe uma
@@ -87,7 +87,8 @@ implementação comum entre elas, 'ABAP:ZMHL_CL_CUSTOM_ENTITY'.
 ### 4. Agora cria a Classe de implementação, onde vai ser feita a chamada da RFC com os
 filtros do oData e retornada as tabelas item e msg.
 
-![image](https://github.com/user-attachments/assets/c330e2cd-9b5f-4c1c-b310-3dac1d7cbfe8)
+![image](https://github.com/user-attachments/assets/b2f3030b-8dee-404e-aa44-8c0e7bbc8c7a)
+
 _A classe de implementação será criada com a interface if_rap_query_provider e o método
 select ficará aberto para implementar a chamada da RFC._
 
@@ -198,7 +199,7 @@ expose ZMHL_I_CUSTOM_MSG as Msg;
 }
 ```
 
-7. Crie o Service Binding para serviço odata V2 (tipo webapi) e clique no botão publicar.
+### 7. Crie o Service Binding para serviço odata V2 (tipo webapi) e clique no botão publicar.
 
    ![image](https://github.com/user-attachments/assets/7ddd8902-83b7-4e00-ac03-6edd69be9c98)
 
@@ -222,5 +223,33 @@ navegação fará com que ele passe apenas uma vez na implementação e não ser
 retornar o tipo de dados das filhas da estrutura complexa criada.
 
 ![image](https://github.com/user-attachments/assets/0bc68380-460d-4ac5-be51-deb5564b2a18)
+
+> [!NOTE]
+Como, neste cenário, ele vai passar três vez pela classe, HEADER, ITEM, MSG, então crie uma
+lógica para na primeira vez que ele passar chamar a RFC com os filtros do GET, e guarde a
+resposta da RFC para ir passando em cada chamada da CDS filha. Exemplo: to_Item.
+
+![image](https://github.com/user-attachments/assets/0886a871-55b3-4084-a1e6-5c80c4167a98)
+
+_A leitura dos filtros (parâmetros de entrada) virá através do io_request. Filtros OData sempre são
+range, ou seja, pode ser um ou mais valores para cada campo._
+
+![image](https://github.com/user-attachments/assets/78aed211-7b4d-4bd6-9998-d104ebec7f2c)
+
+_Algumas RFCs recebem range, então já viria corretamente._
+
+![image](https://github.com/user-attachments/assets/0123bd71-fae1-4eba-a1fc-2f2a11751a8f)
+
+_Parâmetros simples como o nosso p_param1 virá pelo método:_
+
+![image](https://github.com/user-attachments/assets/848ea9b4-8f4a-4eaf-9995-c208620b6b19)
+
+![image](https://github.com/user-attachments/assets/efa6fbba-4dbd-4881-bbcc-2780d3064a0b)
+
+
+
+
+
+
 
 
