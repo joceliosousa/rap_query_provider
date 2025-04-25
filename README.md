@@ -21,7 +21,7 @@ Para utilização desta arquitetura precisaremos criar uma CDS Root tipo Custom 
 ou mais filhas. Essa estrutura é um padrão OData que deve ter um header e um ou mais estrutura
 de itens, tipo tabela (array).
 
-* *Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
+__Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
 filtros.
 
 1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
@@ -202,7 +202,8 @@ expose ZMHL_I_CUSTOM_MSG as Msg;
 * *Veja que a navegação entre Header e filhas é criada e fica fácil de passar o que precisa ser
 retornado na chamada do serviço, via parâmetro $expand do Odata.
 
-> [!NOTE] O serviço publicado fica local, para publicar o serviço que será transportado, utilize:
+> [!NOTE]
+> O serviço publicado fica local, para publicar o serviço que será transportado, utilize:
 /IWFND/MAINT_SERVICE.
 
 ![image](https://github.com/user-attachments/assets/2f83fea1-3bd7-4fc3-a1ee-d26e006c2547)
