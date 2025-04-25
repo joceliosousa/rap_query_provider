@@ -82,12 +82,14 @@ $projection.HeaderID;
 
 _Salve todas as CDS criadas._
 
-### 3. Criada as três CDSs, perceba que o campo chave é o mesmo para as três e existe
+### 3. Criada as três CDSs, 
+
+_perceba que o campo chave é o mesmo para as três e existe
 associação entre as filhas e a CDS root. Perceba, também, que existe uma
-implementação comum entre elas, 'ABAP:ZMHL_CL_CUSTOM_ENTITY'.
+implementação comum entre elas, 'ABAP:ZMHL_CL_CUSTOM_ENTITY'._
 
 ### 4. Agora cria a Classe de implementação, onde vai ser feita a chamada da RFC com os
-filtros do oData e retornada as tabelas item e msg.
+### filtros do oData e retornada as tabelas item e msg.
 
 ![image](https://github.com/user-attachments/assets/b2f3030b-8dee-404e-aa44-8c0e7bbc8c7a)
 
@@ -97,7 +99,7 @@ select ficará aberto para implementar a chamada da RFC._
 ![image](https://github.com/user-attachments/assets/e684ec15-97d9-48ed-aca0-32eb3ccd3831)
 
 ### 5. Ative todos os objetos criados até agora e implemente a classe para ler filtros e
-retornar a tabela correta para cada filha criada.
+###retornar a tabela correta para cada filha criada.
 
 ```
 METHOD if_rap_query_provider~select.
@@ -185,12 +187,12 @@ ENDCASE.
 ENDMETHOD.
 ```
 
-Veja que na implementação você terá que retornar o campo chave em todas as
+_Veja que na implementação você terá que retornar o campo chave em todas as
 estruturas, na Header, Item e Msg. Pode ser um valor fixo no código, não precisa vir pelo
-GET.
+GET._
 
 ### 6. Cria o Service Definition e dê nomes (as Header) a cada CDS que está sendo exposta
-para facilitar o acesso as filhas pelo serviço.
+### para facilitar o acesso as filhas pelo serviço.
 
 ```
 @EndUserText.label: 'Custom Entity Service Definition'
