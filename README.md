@@ -2,7 +2,7 @@
 ## Deep entity com Custom entity e RAP query provider
 
 Já construi algumas APIs ou mesmo expus CDS custom entity para retornar algo tipo, um arquivo PDF, para o frontend facilmente. 
-Mas e se você precisar retorar várias estruturas?
+Mas e se você precisar retornar várias estruturas?
 Como sabemos, criando custom entity e implementando Query provider é bem simples para retornar apenas uma estrutura.
 
 > [!CAUTION]
