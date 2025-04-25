@@ -21,10 +21,9 @@ Para utilização desta arquitetura precisaremos criar uma CDS Root tipo Custom 
 ou mais filhas. Essa estrutura é um padrão OData que deve ter um header e um ou mais estrutura
 de itens, tipo tabela (array).
 
-Página | 2
-Nissan Internal
-Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
+* *Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
 filtros.
+
 1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
 filtros (parâmetros de entrada) e as filhas _Item e _Msg (tabelas que serão retornadas).
 Utilizaremos um parâmetro simples (não é range), chamado p_param1
@@ -96,6 +95,7 @@ select ficará aberto para implementar a chamada da RFC.
 5. Ative todos os objetos criados até agora e implemente a classe para ler filtros e
 retornar a tabela correta para cada filha criada.
 
+```
 METHOD if_rap_query_provider~select.
 DATA: lt_header TYPE STANDARD TABLE OF zmhl_i_custom_header,
 lt_item TYPE STANDARD TABLE OF zmhl_i_custom_item,
@@ -193,15 +193,16 @@ expose ZMHL_i_Custom_Header as Header;
 expose ZMHL_I_Custom_Item as Item;
 expose ZMHL_I_CUSTOM_MSG as Msg;
 }
+```
 
 7. Crie o Service Binding para serviço odata V2 (tipo webapi) e clique no botão publicar.
 
    ![image](https://github.com/user-attachments/assets/7ddd8902-83b7-4e00-ac03-6edd69be9c98)
 
- Veja que a navegação entre Header e filhas é criada e fica fácil de passar o que precisa ser
+* *Veja que a navegação entre Header e filhas é criada e fica fácil de passar o que precisa ser
 retornado na chamada do serviço, via parâmetro $expand do Odata.
 
-Dica: O serviço publicado fica local, para publicar o serviço que será transportado, utilize:
+> [!NOTE] O serviço publicado fica local, para publicar o serviço que será transportado, utilize:
 /IWFND/MAINT_SERVICE.
 
 ![image](https://github.com/user-attachments/assets/2f83fea1-3bd7-4fc3-a1ee-d26e006c2547)
