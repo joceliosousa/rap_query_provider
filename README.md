@@ -226,7 +226,8 @@ a implementação, dentro da classe, para cada entidade que você criou como fil
 navegação fará com que ele passe apenas uma vez na implementação e não será possível
 retornar o tipo de dados das filhas da estrutura complexa criada.
 
-![image](https://github.com/user-attachments/assets/0bc68380-460d-4ac5-be51-deb5564b2a18)
+![image](https://github.com/user-attachments/assets/9a54fa17-ccad-4351-823f-f4eb765e6c00)
+
 
 > [!NOTE]
 Como, neste cenário, ele vai passar três vez pela classe, HEADER, ITEM, MSG, então crie uma
