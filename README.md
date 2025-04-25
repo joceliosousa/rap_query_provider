@@ -1,7 +1,8 @@
 # Construindo APIs que acessam estruturas complexas em RAP
 ## Deep entity com Custom entity e RAP query provider
 
-Já construi algumas APIs ou mesmo expus CDS custom entity para retornar algo, tipo um arquivo PDF, para o frontend. Mas e se você precisar retorar várias estruturas?
+Já construi algumas APIs ou mesmo expus CDS custom entity para retornar algo tipo, um arquivo PDF, para o frontend facilmente. 
+Mas e se você precisar retorar várias estruturas?
 Como sabemos, criando custom entity e implementando Query provider é bem simples para retornar apenas uma estrutura.
 
 E as chamadas Deep Entities ?
