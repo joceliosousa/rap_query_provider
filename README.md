@@ -48,3 +48,32 @@ _Msg : composition [1..*] of ZMHL_I_CUSTOM_MSG;
 
 Deve existir uma composition, 1 para vários, com o tipo de estrutura (CDS) que será
 retornada.
+
+2. Salve a CDS criada, mas ainda não as ative. Crie as outras CDSs que serão retornadas
+como uma tabela com várias linhas.
+Para o meu cenário ZMHL_I_Custom_Item e ZMHL_I_CUSTOM_MSG.
+
+```
+@ObjectModel.query.implementedBy: &#39;ABAP:ZMHL_CL_CUSTOM_ENTITY&#39;
+@EndUserText.label: &#39;Item&#39;
+define custom entity ZMHL_I_Custom_Item
+{
+key HeaderID : abap.char( 5 );
+key Item : abap.numc( 2 );
+Description : abap.char( 40 );
+_Header : association to parent ZMHL_I_Custom_Header on _Header.HeaderID =
+$projection.HeaderID;
+}
+
+
+@ObjectModel.query.implementedBy: &#39;ABAP:ZMHL_CL_CUSTOM_ENTITY&#39;
+@EndUserText.label: &#39;Item&#39;
+define custom entity ZMHL_I_CUSTOM_MSG
+{
+key HeaderID : abap.char( 5 );
+key Item : abap.numc( 2 );
+Message : abap.char( 40 );
+_Header : association to parent ZMHL_i_Custom_Header on _Header.HeaderID =
+$projection.HeaderID;
+}
+```
