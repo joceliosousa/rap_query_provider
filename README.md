@@ -21,14 +21,15 @@ Para utilização desta arquitetura precisaremos criar uma CDS Root tipo Custom 
 ou mais filhas. Essa estrutura é um padrão OData que deve ter um header e um ou mais estrutura
 de itens, tipo tabela (array).
 
-__Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
-filtros.
+_Nosso cenário: Utilizaremos duas tabelas de retorno, com dois tipos diferentes, e utilizaremos
+filtros._
 
-1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
+###1. Crie a CDS Root, tipo Custom Entity, incluindo os campos que serão utilizados como
 filtros (parâmetros de entrada) e as filhas _Item e _Msg (tabelas que serão retornadas).
-Utilizaremos um parâmetro simples (não é range), chamado p_param1
+
+_Utilizaremos um parâmetro simples (não é range), chamado p_param1
 Cenários simples com campos não complexos podem ser passados no with
-parameters, ou pode mesclar parâmetros simples com filtros.
+parameters, ou pode mesclar parâmetros simples com filtros._
 
 ```
 @ObjectModel.query.implementedBy: 'ABAP:ZMHL_CL_CUSTOM_ENTITY'
@@ -45,10 +46,10 @@ _Msg : composition [1..*] of ZMHL_I_CUSTOM_MSG;
 }
 ```
 
-Deve existir uma composition, 1 para vários, com o tipo de estrutura (CDS) que será
-retornada.
+_Deve existir uma composition, 1 para vários, com o tipo de estrutura (CDS) que será
+retornada._
 
-2. Salve a CDS criada, mas ainda não as ative. Crie as outras CDSs que serão retornadas
+###2. Salve a CDS criada, mas ainda não as ative. Crie as outras CDSs que serão retornadas
 como uma tabela com várias linhas.
 Para o meu cenário ZMHL_I_Custom_Item e ZMHL_I_CUSTOM_MSG.
 
