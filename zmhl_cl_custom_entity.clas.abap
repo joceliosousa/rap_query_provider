@@ -58,7 +58,7 @@ CLASS zmhl_cl_custom_entity IMPLEMENTATION.
     DATA(lt_parameters) = io_request->get_parameters( ).
 
     "Get parameters for RFC
-    DATA(lv_status)  =  VALUE #( lt_parameters[ parameter_name = 'P_STATUS' ]-value OPTIONAL ).
+    DATA(lv_status)  =  VALUE #( lt_parameters[ parameter_name = 'P_PARAM1' ]-value OPTIONAL ).
 
     IF gt_header IS INITIAL.
 

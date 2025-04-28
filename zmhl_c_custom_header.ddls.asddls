@@ -1,8 +1,8 @@
 @ObjectModel.query.implementedBy: 'ABAP:ZMHL_CL_CUSTOM_ENTITY'
 @EndUserText.label: 'Header'
 define root custom entity ZMHL_C_Custom_Header
-  //  with parameters
-  //    p_pedido : ebeln
+    with parameters
+     p_param1 : char1
 {
 
   key HeaderID   : abap.char( 5 );
